@@ -201,7 +201,6 @@
         </svg>
         <div class="title-text">
             <span class="solicit">Solicit</span><span class="acoes">ações</span>
-            <span class="de-manut">de Manutenção</span>
         </div>
     </h1>
     <div id="formulario">
@@ -314,7 +313,6 @@
         <p>Recebemos sua solicitação e entraremos em contato em breve!</p>
     </div>
 </div>
-
 <script>
 const iconsSVG = {
     // (mantive o seu mesmo objeto de ícones)
@@ -423,16 +421,23 @@ function mostrarResumo(){
 }
 
 // Botão enviar (corrigido o ID)
-document.getElementById('Enviar').addEventListener('click', () => {
+document.getElementById('btnEnviar').addEventListener('click', () => {
     const nome = document.getElementById('nomeCliente').value.trim();
     const telefone = document.getElementById('telefoneCliente').value.trim();
     const email = document.getElementById('emailCliente').value.trim();
 
-    if(!telefone.match(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/)){
-        document.getElementById('telefoneCliente').classList.add('error');
-        document.getElementById('errorTelefone').classList.add('ativo');
-        return;
-    }
+    const telefoneInput = document.getElementById('telefoneCliente');
+const errorTelefone = document.getElementById('errorTelefone');
+
+if(!telefone.match(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/)){
+    telefoneInput.classList.add('error');
+    errorTelefone.classList.add('ativo');
+    return;
+} else {
+    telefoneInput.classList.remove('error');
+    errorTelefone.classList.remove('ativo');
+}
+    
 
     selecoes.nome = nome;
     selecoes.telefone = telefone;
@@ -442,23 +447,26 @@ document.getElementById('Enviar').addEventListener('click', () => {
     document.getElementById('loading').classList.add('ativo');
 
     // Envio compatível com Google Apps Script
-    const formData = new FormData();
-    for(let key in selecoes){
-        formData.append(key, selecoes[key]);
-    }
-
     fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: formData
-    }).then(res => res.text())
-      .then(() => {
-          document.getElementById('loading').classList.remove('ativo');
-          document.getElementById('sucesso').classList.add('ativo');
-      })
-      .catch(err => {
-          alert('Erro ao enviar. Tente novamente.');
-          document.getElementById('formulario').style.display = 'block';
-          document.getElementById('loading').classList.remove('ativo');
-      });
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(selecoes)
+})
+.then(res => res.json())
+.then(data => {
+    document.getElementById('loading').classList.remove('ativo');
+    if(data.status === 'success'){
+        document.getElementById('sucesso').classList.add('ativo');
+    } else {
+        alert('Erro ao enviar: ' + data.message);
+        document.getElementById('formulario').style.display = 'block';
+    }
+})
+.catch(err => {
+    alert('Erro ao enviar. Tente novamente.');
+    document.getElementById('formulario').style.display = 'block';
+    document.getElementById('loading').classList.remove('ativo');
+}); 
+
 });
 </script>
