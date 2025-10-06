@@ -1,5 +1,4 @@
-
-       * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -349,35 +348,21 @@ body {
 }
 
 .about-image {
-    background: linear-gradient(135deg, #667eea, #764ba2);
     border-radius: 15px;
-    height: 400px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 4em;
     position: relative;
     overflow: hidden;
     width: 100%;
 }
 
 .about-image img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 15px;
-}
-
-.about-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 100,0 80,100 0,80" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center;
-    background-size: cover;
 }
 
 /* Contact Section */
@@ -425,6 +410,11 @@ body {
 .contact-item-icon img {
     max-width: 50px;
     height: auto;
+    transition: transform 0.3s ease;
+}
+
+.contact-item-icon img:hover {
+    transform: scale(1.1);
 }
 
 .contact-item h4 {
@@ -435,6 +425,13 @@ body {
 .contact-item p {
     opacity: 0.8;
     font-size: 1em;
+}
+
+/* CNPJ */
+.icon-cnpj {
+    margin-top: 30px;
+    font-size: 0.95em;
+    opacity: 0.7;
 }
 
 /* Footer */
@@ -478,152 +475,6 @@ body {
     transition: 0.3s;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-    }
-    
-    .nav-container {
-        padding: 0 15px;
-        flex-wrap: nowrap;
-    }
-    
-    .nav-logo {
-        font-size: 1.5em;
-    }
-    
-    .nav-menu {
-        display: none;
-    }
-    
-    .nav-button {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-    
-    .hero-logo {
-        font-size: 2.5em;
-    }
-    
-    .hero-tagline {
-        font-size: 1.2em;
-        letter-spacing: 1px;
-    }
-    
-    .hero-description {
-        font-size: 1em;
-        padding: 0 10px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .btn-primary,
-    .btn-secondary {
-        width: 100%;
-        max-width: 280px;
-        text-align: center;
-    }
-    
-    .section-title {
-        font-size: 2em;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .service-card {
-        padding: 30px 20px;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-    
-    .about-text h2 {
-        font-size: 2em;
-    }
-    
-    .about-image {
-        height: 300px;
-    }
-    
-    .contact-info {
-        flex-direction: column;
-        gap: 40px;
-        align-items: center;
-    }
-    
-    .contact-item {
-        max-width: 100%;
-    }
-    
-    .contact h2 {
-        font-size: 2em;
-    }
-    
-    .services,
-    .about,
-    .contact {
-        padding: 60px 0;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 0 10px;
-    }
-    
-    .nav-logo {
-        font-size: 1.3em;
-    }
-    
-    .nav-button {
-        font-size: 12px;
-        padding: 8px 16px;
-    }
-    
-    .hero-logo {
-        font-size: 2em;
-    }
-    
-    .hero-content {
-        padding: 0 15px;
-    }
-    
-    .section-title {
-        font-size: 1.8em;
-    }
-    
-    .service-card {
-        padding: 25px 15px;
-    }
-    
-    .about-text h2 {
-        font-size: 1.8em;
-    }
-    
-    .contact h2 {
-        font-size: 1.8em;
-    }
-    
-    .container {
-        padding: 0 10px;
-    }
-}
-
 /* Scroll animation */
 .fade-in {
     opacity: 0;
@@ -634,4 +485,419 @@ body {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ========== MELHORIAS MOBILE ========== */
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* Header otimizado */
+    .header {
+        padding: 12px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+        padding: 0 20px;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+    
+    .nav-logo {
+        font-size: 1.6em;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-button {
+        font-size: 13px;
+        padding: 10px 18px;
+        border-radius: 20px;
+    }
+    
+    /* Hero otimizado */
+    .hero {
+        min-height: 100vh;
+        padding: 80px 0 40px;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+    }
+    
+    .hero-logo {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+    
+    .hero-logo .six::after {
+        bottom: -6px;
+        height: 3px;
+    }
+    
+    .hero-tagline {
+        font-size: 1.1em;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-description {
+        font-size: 1em;
+        padding: 0 10px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 20px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+        padding: 14px 30px;
+        font-size: 15px;
+    }
+    
+    /* Sections otimizadas */
+    .services,
+    .about,
+    .contact {
+        padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+        font-size: 1em;
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+    
+    /* Services grid otimizado */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .service-card {
+        padding: 35px 25px;
+        border-radius: 12px;
+    }
+    
+    .service-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+    }
+    
+    .service-card h3 {
+        font-size: 1.3em;
+        margin-bottom: 12px;
+    }
+    
+    .service-card p {
+        font-size: 0.95em;
+        line-height: 1.6;
+    }
+    
+    /* About otimizado */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: left;
+    }
+    
+    .about-text h2 {
+        font-size: 2em;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .about-text p {
+        font-size: 1em;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .about-features {
+        margin-top: 25px;
+    }
+    
+    .about-features li {
+        font-size: 1em;
+        margin-bottom: 12px;
+    }
+    
+    .about-image {
+        height: 300px;
+        border-radius: 12px;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    
+    .about-image img {
+        object-fit: cover;
+    }
+    
+    /* Contact otimizado */
+    .contact h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    
+    .contact > p {
+        font-size: 1em;
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .contact-item {
+        max-width: 100%;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .contact-item-icon img {
+        max-width: 60px;
+    }
+    
+    .contact-item h4 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+    
+    .contact-item p {
+        font-size: 0.95em;
+    }
+    
+    .icon-cnpj {
+        font-size: 0.9em;
+        margin-top: 25px;
+    }
+    
+    /* Footer otimizado */
+    .footer {
+        padding: 25px 20px;
+    }
+    
+    .footer-logo {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+    
+    .footer p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header extra small */
+    .header {
+        padding: 10px 0;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        gap: 8px;
+    }
+    
+    .nav-logo {
+        font-size: 1.4em;
+    }
+    
+    .nav-button {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    
+    /* Hero extra small */
+    .hero {
+        min-height: 100vh;
+        padding: 70px 0 30px;
+    }
+    
+    .hero-content {
+        padding: 0 15px;
+    }
+    
+    .hero-logo {
+        font-size: 2.5em;
+        margin-bottom: 12px;
+    }
+    
+    .hero-tagline {
+        font-size: 1em;
+        margin-bottom: 12px;
+    }
+    
+    .hero-description {
+        font-size: 0.95em;
+        margin-bottom: 25px;
+    }
+    
+    .hero-buttons {
+        padding: 0 15px;
+        gap: 10px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    /* Sections extra small */
+    .services,
+    .about,
+    .contact {
+        padding: 50px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8em;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95em;
+        margin-bottom: 35px;
+    }
+    
+    /* Services extra small */
+    .services-grid {
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: 30px 20px;
+    }
+    
+    .service-icon {
+        font-size: 2.2em;
+    }
+    
+    .service-card h3 {
+        font-size: 1.2em;
+    }
+    
+    .service-card p {
+        font-size: 0.9em;
+    }
+    
+    /* About extra small */
+    .about-content {
+        gap: 30px;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    
+    .about-text p {
+        font-size: 0.95em;
+    }
+    
+    .about-features li {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+    }
+    
+    .about-image {
+        height: 280px;
+        border-radius: 12px;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    
+    .about-image img {
+        object-fit: cover;
+    }
+    
+    /* Contact extra small */
+    .contact h2 {
+        font-size: 1.8em;
+    }
+    
+    .contact > p {
+        font-size: 0.95em;
+        margin-bottom: 25px;
+    }
+    
+    .contact-info {
+        gap: 25px;
+    }
+    
+    .contact-item-icon img {
+        max-width: 55px;
+    }
+    
+    .contact-item h4 {
+        font-size: 1.1em;
+    }
+    
+    .contact-item p {
+        font-size: 0.9em;
+    }
+    
+    .icon-cnpj {
+        font-size: 0.85em;
+    }
+    
+    /* Footer extra small */
+    .footer {
+        padding: 20px 15px;
+    }
+    
+    .footer-logo {
+        font-size: 1.2em;
+    }
+    
+    .footer p {
+        font-size: 0.85em;
+    }
+}
+
+/* Touch improvements */
+@media (hover: none) and (pointer: coarse) {
+    .nav-button,
+    .btn-primary,
+    .btn-secondary {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .contact-item-icon a {
+        display: inline-block;
+        padding: 10px;
+        margin: -10px;
+    }
 }
