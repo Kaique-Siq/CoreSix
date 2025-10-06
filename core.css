@@ -912,3 +912,100 @@ body {
         margin: -10px;
     }
 }
+
+/* ==== Serviços Modernos com Ícones SVG e Animações ==== */
+.services {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.service-card {
+  display: block;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(102,126,234,0.15), rgba(118,75,162,0.15));
+  transition: 0.5s;
+}
+
+.service-card:hover::after {
+  left: 0;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #667eea;
+  box-shadow: 0 10px 25px rgba(102,126,234,0.3);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+}
+
+.service-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: #667eea;
+  transition: transform 0.3s ease, stroke 0.3s ease;
+}
+
+.service-card:hover .service-icon svg {
+  transform: scale(1.15);
+  stroke: #764ba2;
+}
+
+.service-card h3 {
+  font-size: 1.4em;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.service-card p {
+  color: #7f8c8d;
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+/* Animação de clique */
+.service-card:active {
+  transform: scale(0.97);
+}
+
+/* Foco acessível */
+.service-card:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 4px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .service-card {
+    padding: 35px 25px;
+  }
+}
